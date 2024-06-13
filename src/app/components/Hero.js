@@ -1,4 +1,4 @@
-import heroImg from '../../../public/hero-magistv.png'
+import heroImg from '../../../public/hero-magistv.png' 
 import Image from 'next/image'
 
 const getStrapiData = async (path) => {
@@ -25,7 +25,7 @@ const Hero = async () => {
         <p className='opacity-90 text-sm leading-relaxed font-light py-4 pb-6 md:py-6 md:pb-10 md:text-base md:w-90 md:mx-auto lg:text-lg'>
           {description}
         </p>
-        <a href="#pricing" className='px-7 py-3 font-medium bg-[#e7ebff] text-[#2245ff] rounded-full'>Contratá ahora</a>
+        <a href="#pricing" className='px-7 py-3 font-medium bg-[#e7ebff] text-[#2245ff] rounded-full'>Contrata ahora</a>
       </header>
       <footer className='2xl:container md:absolute md:right-8 md:-z-10 w-full md:w-[50vw] md:max-w-[55rem] h-[15rem] md:h-[30rem] sm:mb-20 md:mt-40 lg:mt-20 object-cover'>
         <Image src={heroImg} alt='Imagen de peliculas, series y canales de MagisTV' />
