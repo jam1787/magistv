@@ -1,4 +1,5 @@
 import { Form } from '@/app/components/Form/Form'
+import {registerUserAction} from '@/app/actions/auth-actions'
 
 const CreateAccount = () => {
   return (
@@ -8,6 +9,7 @@ const CreateAccount = () => {
         otherFormQuestion='¿Ya tienes una cuenta?'
         otherFormText='Iniciar Sesión'
         otherFormLink='/sign-in'
+        userAction={registerUserAction}
     />
   )
 }

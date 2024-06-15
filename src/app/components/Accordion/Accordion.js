@@ -6,20 +6,20 @@ export const Accordion = ({question, answer, allowDevices, devices}) => {
     const [accordionOpen, setAccordionOpen] = useState(false)
 
   return (
-    <div className={'px-3 md:px-5 py-5 border-b'} onClick={() => setAccordionOpen(!accordionOpen)}>
+    <div className='px-3 pt-5 pb-3 border-b' onClick={() => setAccordionOpen(!accordionOpen)}>
         <button
             className='w-full text-start flex items-center justify-between gap-2'
         >
             <span className='text-pretty'>{question}</span>
             <AccordionAnimation accordionOpen={accordionOpen}/>
         </button>
-        <div className={`py-2 text-sm transition-all overflow-hidden ${
+        <div className={`py-2 text-sm transition duration-300 overflow-hidden ${
             accordionOpen
-                ? 'h-fit opacity-100' 
-                : 'h-0 opacity-0'
+                ? 'h-full' 
+                : 'h-0'
         }`}>
-            <div className="overflow-hidden pt-2 transtion">
-                <p className='opacity-85 w-[90%] text-ballance' >{answer}</p>
+            <div className="pt-2 transtion">
+                <p className='opacity-85 w-[90%] text-ballance'>{answer}</p>
                 {devices && 
                     allowDevices.map(({tv, stream, mobile}, i) => 
                         <ul key={i} className='pt-4'>
