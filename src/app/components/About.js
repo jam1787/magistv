@@ -5,26 +5,25 @@ import moviesAndSeries from '../../../public/moviesAndSeries.png'
 import { useEffect, useRef } from "react"
 
 const About = () => {
-    const carouselRef = useRef();
-    const itemRefs = useRef([]);
+    const carouselRef = useRef()
+    const itemRefs = useRef([])
+
     useEffect(() => {
+      const handleScroll = () => {
+        let proportion =
+          carouselRef.current.getBoundingClientRect().top / window.innerHeight
+  
+        let index = Math.ceil(-1 * (proportion + 0.5))
+  
+        itemRefs.current.forEach((item, i) => {
+          item.className = "brand-img";
+          if (i === index) {
+            item.className = "brand-img brand-img-active";
+          }
+        })
+      }
     
-        const handleScroll = () => {
-            let proportion =
-              carouselRef.current.getBoundingClientRect().top / window.innerHeight;
-      
-            let index = Math.ceil(-1 * (proportion + 0.5));
-      
-            itemRefs.current.forEach((item, i) => {
-              item.className = "brand-img";
-              if (i === index) {
-                item.className = "brand-img brand-img-active";
-              }
-            });
-          };
-      
-          document.addEventListener("scroll", handleScroll);
-      
+      document.addEventListener("scroll", handleScroll)
     }, [])    
     
   return (

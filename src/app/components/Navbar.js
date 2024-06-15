@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <header className='fixed top-0 left-0 z-20 w-full backdrop-blur-md'>
         <nav className="flex items-center justify-between text-white 2xl:container 2xl:m-auto px-5 lg:px-8 py-2 md:py-4">
-            <Link href="#" className='w-32'>Logo</Link>
+            <Link href="/" className='w-32'>Logo</Link>
             <ul className={`${menuClick ? menuStyles + menuActiveStyles : menuStyles}`}>
                 {navLinks.map(({name, route}, i) => 
                     <li key={i}>
