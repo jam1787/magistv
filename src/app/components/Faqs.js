@@ -19,7 +19,7 @@ export const Faqs = () => {
         <div className="max-w-2xl mx-auto text-center mt-16 mb-8 md:mb-20">
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">Preguntas frecuentes</h2>
         </div>
-        <div className="p-2 w-[90%] mx-auto max-w-[50rem] rounded-lg border shadow-lg">
+        <div className="p-2 w-[90%] mx-auto max-w-[50rem] rounded-lg">
           {faqsData.map(({question, answer, devices}, i) =>
             <Accordion
               key={i}
