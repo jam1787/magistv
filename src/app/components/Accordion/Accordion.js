@@ -6,7 +6,7 @@ export const Accordion = ({question, answer, allowDevices, devices}) => {
     const [accordionOpen, setAccordionOpen] = useState(false)
 
   return (
-    <div className='px-3 pt-5 pb-3 border-b' onClick={() => setAccordionOpen(!accordionOpen)}>
+    <div className='px-3 pt-5 pb-3 border-b cursor-pointer' onClick={() => setAccordionOpen(!accordionOpen)}>
         <button
             className='w-full text-start flex items-center justify-between gap-2'
         >

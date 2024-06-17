@@ -1,10 +1,12 @@
 "use client"
 import Link from 'next/link'
-import { useState } from 'react'
 import {useFormState} from 'react-dom'
+import {ZodErrors} from './ZodErrors'
 
 const INITIAL_STATE = {
-    data: 'hello from client'
+    data: null,
+    zodErrors: null,
+    message: null
 }
 
 export const Form = ({
@@ -16,14 +18,7 @@ export const Form = ({
     otherFormLink,
     userAction
 }) => {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
-    console.log(formState, 'client')
-    // const onCreateAccount = () => {
-
-    // }
 
   return (
     <div className="w-screen max-w-72 p-2 rounded-lg">
@@ -34,25 +29,25 @@ export const Form = ({
                 <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
                 <input
                     className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
-                    type="email" 
+                    type="text" 
                     name="email" 
                     id="email" 
                     placeholder="Escribe tu correo"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                    
                 />
+                <ZodErrors error={formState?.zodErrors?.email} />
             </div>
             <div className="mt-3 text-sm">
                 <label htmlFor="password" className='block opacity-85 mb-2'>Contraseña</label>
                 <input
                     className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
-                    type="password" 
-                    name="password" 
-                    id="password" 
+                    type="password"
+                    name="password"
+                    id="password"
                     placeholder="Escribe tu contraseña" 
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+                    
                 />
+                <ZodErrors error={formState?.zodErrors?.password} />
                 {forgotPassword &&
                     <Link className='block text-sm mt-3 text-end' href="#">
                         {forgotPassword}
@@ -62,8 +57,6 @@ export const Form = ({
             <button 
                 className="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md" 
                 type='submit'
-                // onClick={() => onCreateAccount()}
-                disabled={!(email && password)}
             >
                 {btnSubmitText}
             </button>
