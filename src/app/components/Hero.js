@@ -4,7 +4,7 @@ import Image from 'next/image'
 const getStrapiData = async (path) => {
   const baseUrl = "http://localhost:1337"
   try {
-    const res = await fetch(baseUrl + path)
+    const res = await fetch(baseUrl + path, { cache: 'no-store' })
     const data = await res.json()
     return data
   } catch (error) {
