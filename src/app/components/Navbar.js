@@ -28,7 +28,7 @@ const Navbar = () => {
                     </li>
                 )}
                 <li>
-                    <LinkComponent text='Registrate' classStyle='py-2 px-5' />
+                    <LinkComponent route='create-account' text='Registrate' classStyle='py-2 px-5' />
                 </li>
             </ul>
             <button className="md:hidden" onClick={handleClick}>

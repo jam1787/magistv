@@ -6,7 +6,7 @@ html{
     scroll-behavior: smooth;
 }
 @media (min-width: 47rem) {
-    .brand-img{
+    .about-img{
         position: absolute;
         top: 0;
         left: 0;
@@ -20,7 +20,7 @@ html{
         transition: .3s ease-in;
         transform: scale(.3);
     }
-    .brand-img.brand-img-active{
+    .about-img.about-img-active{
         transform: scale(1);
         opacity: 1;
     }

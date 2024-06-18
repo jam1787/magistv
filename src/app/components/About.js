@@ -16,15 +16,17 @@ const About = () => {
         let index = Math.ceil(-1 * (proportion + 0.5))
   
         itemRefs.current.forEach((item, i) => {
-          item.className = "brand-img";
+          item.className = "about-img";
           if (i === index) {
-            item.className = "brand-img brand-img-active";
+            item.className = "about-img about-img-active";
           }
         })
       }
     
       document.addEventListener("scroll", handleScroll)
-    }, [])    
+
+      return () => document.removeEventListener("scroll", handleScroll)
+    }, [])
     
   return (
     <section ref={carouselRef} className="relative w-full flex flex-col md:flex-row gap-6 justify-center 2xl:container 2xl:mx-auto md:pr-8">
@@ -41,10 +43,10 @@ const About = () => {
             </div>
         </div>
         <div className="hidden md:block md:basis-1/2 md:sticky top-0 right-0 md:h-screen md:max-h-[55rem]">
-            <div ref={el => itemRefs.current[0] = el} className="brand-img brand-img-active">
+            <div ref={el => itemRefs.current[0] = el} className="about-img about-img-active">
                 <Image className="max-w-[90%]" src={brands} alt='Canales que aparecen en la plataforma' />
             </div>
-            <div ref={el => itemRefs.current[1] = el} className="brand-img hidden">
+            <div ref={el => itemRefs.current[1] = el} className="about-img hidden">
                 <Image className="h-[90%] object-contain" src={moviesAndSeries} alt='Canales que aparecen en la plataforma' />
             </div>
         </div>

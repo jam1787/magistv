@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-const LinkComponent = ({text, classStyle}) => {
+const LinkComponent = ({text, classStyle, route}) => {
   return (
-    <Link href='#' className={`${classStyle} font-normal bg-[#e7ebff] text-[#2245ff] rounded-full`}>{text}</Link>
+    <Link href={`/${route}`} className={`${classStyle} font-normal bg-[#e7ebff] text-[#2245ff] rounded-full`}>{text}</Link>
   )
 }
 
