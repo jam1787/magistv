@@ -6,6 +6,7 @@ import {StrapiErrors} from './StrapiErrors'
 
 const INITIAL_STATE = {
     data: null,
+    strapiErrors: null,
     zodErrors: null,
     message: null
 }
@@ -26,30 +27,48 @@ export const Form = ({
         <h1 className="text-3xl font-semibold capitalize">{title}</h1>
         <p className='text-sm opacity-85 mt-1'>Ingresa tus datos para {title === "Iniciar Sesión" ? 'iniciar sesión' : 'registrarte'}</p>
         <form className="mt-5" action={formAction}>
-            <div className="text-sm">
-                <label className='block opacity-85 mb-2' htmlFor="email">Usuario</label>
-                <input
-                    className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
-                    type="text" 
-                    name="username" 
-                    id="username" 
-                    placeholder="Escribe un nombre usuario"
-                    required
-                />
-                <ZodErrors error={formState?.zodErrors?.username} />
-            </div>
-            <div className="mt-3 text-sm">
-                <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
-                <input
-                    className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    placeholder="Escribe tu correo"
-                    required
-                />
-                <ZodErrors error={formState?.zodErrors?.email} />
-            </div>
+            {!forgotPassword 
+                ? 
+                <>
+                    <div className="text-sm">
+                        <label className='block opacity-85 mb-2' htmlFor="email">Usuario</label>
+                        <input
+                            className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
+                            type="text" 
+                            name="username" 
+                            id="username" 
+                            placeholder="Escribe un nombre de usuario"
+                            required
+                        />
+                        <ZodErrors error={formState?.zodErrors?.username} />
+                    </div>
+                    <div className="mt-3 text-sm">
+                        <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
+                        <input
+                            className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="Escribe tu correo"
+                            required
+                        />
+                        <ZodErrors error={formState?.zodErrors?.email} />
+                    </div>
+                </>
+
+                : <div className="text-sm">
+                    <label className='block opacity-85 mb-2' htmlFor="email">Correo o usuario</label>
+                    <input
+                        className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
+                        type="text"
+                        name="identifier"
+                        id="identifier"
+                        placeholder="Escribe tu usuario o correo"
+                        required
+                    />
+                    <ZodErrors error={formState?.zodErrors?.identifier} />
+                 </div>
+            }
             <div className="mt-3 text-sm">
                 <label htmlFor="password" className='block opacity-85 mb-2'>Contraseña</label>
                 <input
@@ -57,8 +76,7 @@ export const Form = ({
                     type="password"
                     name="password"
                     id="password"
-                    placeholder="Escribe tu contraseña" 
-                    required
+                    placeholder="Escribe tu contraseña"
                 />
                 <ZodErrors error={formState?.zodErrors?.password} />
                 {forgotPassword &&

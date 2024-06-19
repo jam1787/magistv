@@ -1,7 +1,7 @@
 "use server"
 import {z} from 'zod'
 import { cookies } from 'next/headers'
-import { registerUserService } from '../services/auth-service'
+import { registerUserService, loginUserService } from '../services/auth-service'
 import { redirect } from 'next/navigation'
 
 const config = {
@@ -41,6 +41,7 @@ export async function registerUserAction(prevState, FormData) {
         return {
             ...prevState,
             zodErrors: validatedFields.error.flatten().fieldErrors,
+            strapiErrors: null,
             message: "Missing Fields. Failed to Register"
         }
     }
@@ -52,7 +53,7 @@ export async function registerUserAction(prevState, FormData) {
             ...prevState,
             zodErrors: null,
             strapiErrors: null,
-            message: "Ups! Algo salio mal. Por favor intente de nuevo"
+            message: "Ups! Algo salio mal. Por favor intente de nuevo."
         }
     }
 
@@ -67,4 +68,66 @@ export async function registerUserAction(prevState, FormData) {
     
     cookies().set("jwt", responseData.jwt, config);
     redirect("/dashboard");
+}
+
+const schemaLogin = z.object({
+    identifier: z
+        .string()
+        .min(3, {
+        message: "El identificador debe ser de al menos 3 caracteres",
+        })
+        .max(20, {
+        message: "Por favor ingrese un nombre de usuario o correo valido",
+        }),
+    password: z
+        .string()
+        .min(6, {
+        message: "La contraseña debe ser de al menos 6 caracteres",
+        })
+        .max(50, {
+        message: "La contraseña debe ser entre 6 y 50 caracteres.",
+        }),
+});
+  
+export async function loginUserAction(prevState, formData) {
+    const validatedFields = schemaLogin.safeParse({
+      identifier: formData.get("identifier"),
+      password: formData.get("password"),
+    });
+  
+    if (!validatedFields.success) {
+      return {
+        ...prevState,
+        zodErrors: validatedFields.error.flatten().fieldErrors,
+        message: "Missing Fields. Failed to Login.",
+      };
+    }
+  
+    const responseData = await loginUserService(validatedFields.data);
+  
+    if (!responseData) {
+      return {
+        ...prevState,
+        strapiErrors: responseData.error,
+        zodErrors: null,
+        message: "Ups! Algo salio mal. Por favor intente de nuevo.",
+      };
+    }
+  
+    if (responseData.error) {
+      return {
+        ...prevState,
+        strapiErrors: responseData.error,
+        zodErrors: null,
+        message: "Error al iniciar sesión.",
+      };
+    }
+  
+    cookies().set("jwt", responseData.jwt, config);
+    redirect("/dashboard");
+  }
+  
+export async function logoutAction() {
+    cookies().set("jwt", "", { ...config, maxAge: 0 });
+    redirect("/");
 }
