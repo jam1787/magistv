@@ -5,7 +5,7 @@ import Pricing from "./components/Pricing";
 
 export default function Home() {
   return (
-    <main>
+    <main className="text-white">
       <Hero />
       <About />
       <Pricing />

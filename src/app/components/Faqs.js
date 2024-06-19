@@ -15,7 +15,7 @@ const allowDevices = [{
 
 export const Faqs = () => {
     return ( 
-      <section className="text-white mb-10">
+      <section className='mb-10'>
         <div className="max-w-2xl mx-auto text-center mt-16 mb-8 md:mb-20">
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">Preguntas frecuentes</h2>
         </div>

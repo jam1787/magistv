@@ -17,7 +17,7 @@ const Hero = async () => {
   const {title, description} = strapiData.data.attributes
 
   return (
-    <section className='2xl:container 2xl:m-auto relative h-screen max-h-[70rem] flex justify-around md:justify-between items-center flex-col md:flex-row p-5 lg:px-8 text-white text-balance text-center md:text-start'>
+    <section className='2xl:container 2xl:m-auto relative h-screen max-h-[70rem] flex justify-around md:justify-between items-center flex-col md:flex-row p-5 lg:px-8 text-balance text-center md:text-start'>
       <header className="mt-10 md:mt-0 max-w-xl">
         <h1 className="text-3xl font-medium leading-tight md:text-5xl md:leading-tight md:font-semibold lg:text-6xl lg:leading-[1.15]">
           {title}

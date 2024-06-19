@@ -30,7 +30,7 @@ const About = () => {
     
   return (
     <section ref={carouselRef} className="relative w-full flex flex-col md:flex-row gap-6 justify-center 2xl:container 2xl:mx-auto md:pr-8">
-        <div className="md:basis-1/2 h-fit flex flex-col gap-10 justify-center text-balance text-white text-center md:text-start">
+        <div className="md:basis-1/2 h-fit flex flex-col gap-10 justify-center text-balance text-center md:text-start">
             <div className="w-full md:h-screen max-w-md md:max-w-xl md:max-h-[55rem] md:flex flex-col justify-center px-5 md:px-8 mx-auto md:mx-0">
                 <h2 className="text-3xl md:text-6xl font-semibold pb-8">Canales que siempre quisiste ver</h2>
                 <p className="text-xs md:text-sm opacity-85">Aqui puedes observar una lista de canales y programas que se encuentran dentro de la plataforma.</p>
