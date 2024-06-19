@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import {useFormState} from 'react-dom'
 import {ZodErrors} from './ZodErrors'
+import {StrapiErrors} from './StrapiErrors'
 
 const INITIAL_STATE = {
     data: null,
@@ -26,14 +27,26 @@ export const Form = ({
         <p className='text-sm opacity-85 mt-1'>Ingresa tus datos para {title === "Iniciar Sesión" ? 'iniciar sesión' : 'registrarte'}</p>
         <form className="mt-5" action={formAction}>
             <div className="text-sm">
-                <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
+                <label className='block opacity-85 mb-2' htmlFor="email">Usuario</label>
                 <input
                     className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                     type="text" 
+                    name="username" 
+                    id="username" 
+                    placeholder="Escribe un nombre usuario"
+                    required
+                />
+                <ZodErrors error={formState?.zodErrors?.username} />
+            </div>
+            <div className="mt-3 text-sm">
+                <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
+                <input
+                    className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
+                    type="email" 
                     name="email" 
                     id="email" 
                     placeholder="Escribe tu correo"
-                    
+                    required
                 />
                 <ZodErrors error={formState?.zodErrors?.email} />
             </div>
@@ -45,7 +58,7 @@ export const Form = ({
                     name="password"
                     id="password"
                     placeholder="Escribe tu contraseña" 
-                    
+                    required
                 />
                 <ZodErrors error={formState?.zodErrors?.password} />
                 {forgotPassword &&
@@ -60,6 +73,7 @@ export const Form = ({
             >
                 {btnSubmitText}
             </button>
+            <StrapiErrors error={formState?.strapiErrors}/>
         </form>
         <span className="flex justify-between text-sm font-light">
             {otherFormQuestion}
@@ -70,4 +84,3 @@ export const Form = ({
     </div>
   )
 }
-

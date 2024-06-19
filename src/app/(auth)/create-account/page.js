@@ -1,5 +1,5 @@
 import { Form } from '@/app/components/Form/Form'
-import {registerUserAction} from '@/app/actions/auth-actions'
+import {registerUserAction} from '@/app/data/actions/auth-actions'
 
 const CreateAccount = () => {
   return (
