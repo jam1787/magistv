@@ -10,12 +10,14 @@ const Navbar = () => {
     const handleClick = () => setMenuClick(!menuClick);
 
     const menuStyles = 'flex absolute -z-10 top-[-100vh] left-0 gap-12 flex-col justify-center items-center text-xl h-screen w-full font-semibold md:font-normal transition-all duration-300 md:flex-row md:static md:gap-6 md:text-base md:h-0 md:w-auto md:transition-none md:z-0'
-    const menuActiveStyles = 'backdrop-blur-md bg-[#637cff] top-[0] left-0'
+    const menuActiveStyles = 'backdrop-blur-md bg-gradient-to-b from-[#0024d6] 80% to-[#010130ef] 100% top-[0] left-0'
 
   return (
     <header className='fixed top-0 left-0 z-20 w-full backdrop-blur-md'>
         <nav className="flex items-center justify-between text-white 2xl:container 2xl:m-auto px-5 lg:px-8 py-2 md:py-4">
-            <Link href="/" className='w-32'>Logo</Link>
+            <Link href="/" className='w-16'>
+                <img src='/magis-tv.png' alt='Logo MagisTV' ></img>
+            </Link>
             <ul className={`${menuClick ? menuStyles + menuActiveStyles : menuStyles}`}>
                 {navLinks.map(({name, route}, i) => 
                     <li key={i}>

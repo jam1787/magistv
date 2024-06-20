@@ -5,6 +5,9 @@
 html{
     scroll-behavior: smooth;
 }
+.link-popular-pricing{
+    background-color: #002afa;
+}
 @media (min-width: 47rem) {
     .about-img{
         position: absolute;
