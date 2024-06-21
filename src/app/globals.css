@@ -8,7 +8,25 @@ html{
 .link-popular-pricing{
     background-color: #002afa;
 }
+body{
+    background-color: #060817;
+}
 @media (min-width: 47rem) {
+    .hero-img::before{
+        content: '';
+        height: 220%;
+        width: 62vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* background: radial-gradient(circle, rgba(6,8,23,0.0984768907563025) 60%, rgba(6,8,23,1) 100%); */
+        background: 
+            linear-gradient(to bottom, rgba(6,8,23,1) 0%, rgba(6,8,23,0) 20%, rgba(6,8,23,0) 70%, rgba(6,8,23,1) 100%),
+            radial-gradient(circle, rgba(6,8,23,0.0984768907563025) 90%, rgba(6,8,23,1) 100%),
+            linear-gradient(to right, rgb(6, 8, 23) 0%, rgba(6, 8, 23, 0) 20%)
+            ;
+        ;    
+    }
     .about-img{
         position: absolute;
         top: 0;
@@ -27,7 +45,4 @@ html{
         transform: scale(1);
         opacity: 1;
     }
-}
-body{
-    background-color: #060817;
 }

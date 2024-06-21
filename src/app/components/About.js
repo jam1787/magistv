@@ -2,6 +2,7 @@
 import Image from "next/image"
 import brands from "../../../public/brands.png"
 import moviesAndSeries from '../../../public/moviesAndSeries.png'
+import brands2 from '../../../public/brands2.png'
 import { useEffect, useRef } from "react"
 
 const About = () => {
@@ -39,8 +40,13 @@ const About = () => {
                   <p className="py-10"><span className="text-3xl font-semibold pr-1 text-transparent bg-clip-text bg-gradient-to-r from-[#f569ff] from-[3%] via-[#8286ff] via-[55%] to-[#29d8ff] to-[100%]">+1200</span> canales.</p>
               </div>
               <div className="w-full md:h-screen max-w-md md:max-w-xl md:max-h-[53rem] md:flex flex-col justify-center px-5 md:px-8 mx-auto md:mx-0">
+                  <h2 className="text-2xl md:text-6xl font-semibold pb-8 opacity-85">Disfruta en tu dispositivo favorito</h2>
+                  <p className="text-xs md:text-sm opacity-85">Hasta 3 pantallas simultaneas. Puedes ver en tu Smart tv, celular y tablet.</p>
+                  <p className="py-10"><span className="text-3xl font-semibold pr-1 text-transparent bg-clip-text bg-gradient-to-r from-[#f569ff] from-[3%] via-[#8286ff] via-[55%] to-[#29d8ff] to-[100%]">+10 mil</span> series y películas.</p>
+              </div>
+              <div className="w-full md:h-screen max-w-md md:max-w-xl md:max-h-[53rem] md:flex flex-col justify-center px-5 md:px-8 mx-auto md:mx-0">
                   <h2 className="text-2xl md:text-6xl font-semibold pb-8 opacity-85">Las películas y series más vistas</h2>
-                  <p className="text-xs md:text-sm opacity-85">Cuenta con un catálogo de peliculas y series muy variado </p>
+                  <p className="text-xs md:text-sm opacity-85">Cuenta con un catálogo de peliculas y series muy variado</p>
                   <p className="py-10"><span className="text-3xl font-semibold pr-1 text-transparent bg-clip-text bg-gradient-to-r from-[#f569ff] from-[3%] via-[#8286ff] via-[55%] to-[#29d8ff] to-[100%]">+10 mil</span> series y películas.</p>
               </div>
           </div>
@@ -50,6 +56,9 @@ const About = () => {
               </div>
               <div ref={el => itemRefs.current[1] = el} className="about-img hidden">
                   <Image className="h-[90%] object-contain" src={moviesAndSeries} alt='Canales que aparecen en la plataforma' />
+              </div>
+              <div ref={el => itemRefs.current[2] = el} className="about-img hidden">
+                  <Image className="h-[90%] object-contain" src={brands2} alt='Canales que aparecen en la plataforma' />
               </div>
           </div>
         </div>
