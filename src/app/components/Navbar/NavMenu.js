@@ -1,4 +1,5 @@
 import { IoCloseOutline, IoMenuOutline} from "react-icons/io5"
+import { HiOutlineUser } from "react-icons/hi";
 import Link from 'next/link'
 import LinkComponent from "../LinkComponent"
 
@@ -13,7 +14,7 @@ const NavMenu = ({
   return (
     <nav className="flex items-center justify-between text-white 2xl:container 2xl:m-auto px-5 lg:px-8 py-2 md:py-4">
         <Link href="/" className='w-16'>
-            <img src='/magis-tv.png' alt='Logo MagisTV' ></img>
+            <img src='/magis-tv.png' alt='Logo MagisTV'></img>
         </Link>
         <ul className={`${menuClick ? menuStyles + menuActiveStyles : menuStyles}`}>
             {navLinks.map(({name, route}, i) => 
@@ -32,6 +33,11 @@ const NavMenu = ({
                     text='Registrate' 
                     classStyle='py-2 px-5'
                 />
+            </li>
+            <li>
+                <Link href='sign-in'>
+                    <HiOutlineUser className="text-3xl p-0" />
+                </Link>
             </li>
         </ul>
         <button className="md:hidden" onClick={handleClick}>
