@@ -13,12 +13,10 @@ export const Accordion = ({question, answer, allowDevices, devices}) => {
             <span className='text-pretty'>{question}</span>
             <AccordionAnimation accordionOpen={accordionOpen}/>
         </button>
-        <div className={`py-2 text-sm transition duration-300 overflow-hidden ${
-            accordionOpen
-                ? 'h-full' 
-                : 'h-0'
+        <div className={`text-sm transition-all duration-300 py-1 h-0 overflow-hidden ${
+            accordionOpen && 'h-fit py-2'
         }`}>
-            <div className="pt-2 transtion">
+            <div className="pt-2 transition-all">
                 <p className='opacity-85 w-[90%] text-ballance'>{answer}</p>
                 {devices && 
                     allowDevices.map(({tv, stream, mobile}, i) => 

@@ -1,10 +1,22 @@
 'use client'
 
-const ButtonPay = ({classStyle, price}) => {
+const ButtonPay = ({classStyle, plan}) => {
+  const handlePay = async() => {
+    const res = await fetch('api/checkout', {
+      method: "POST",
+      body: JSON.stringify(plan),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const session = await res.json()
+    window.location = session.url
+  }
+
   return (
     <button
       className={classStyle}
-      onClick={() => console.log('Pagando')}
+      onClick={() => handlePay()}
     >
       CONTRATAR
     </button>
