@@ -11,6 +11,7 @@ export async function POST(req) {
 
     const session = await stripe.checkout.sessions.create({
         success_url: process.env.NEXT_PUBLIC_SUCCESS_URL,
+        cancel_url: process.env.NEXT_PUBLIC_CANCEL_URL,
         line_items: [
             {
                 price_data: {
