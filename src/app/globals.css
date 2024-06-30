@@ -11,7 +11,7 @@ html{
 body{
     background-color: #060817;
 }
-@media (min-width: 47rem) {
+@media (min-width: 48rem) {
     .hero-img::before{
         content: '';
         height: 220%;

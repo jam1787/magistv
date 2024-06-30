@@ -1,14 +1,14 @@
 import { getUserMeLoader } from "../data/services/get-user-me-loader"
 import ButtonPay from "../utils/ButtonPay"
 import { pricingData } from "../utils/pricingData"
-import LinkComponent from "./LinkComponent"
+import LinkComponent from "../components/LinkComponent"
 
-const Pricing = async () => {
+const PricingComponet = async() => {
   const user = await getUserMeLoader()
 
   return (
-    <section id="pricing" className="pt-4 md:pt-20">
-      <h2 className="mx-auto text-3xl md:text-5xl font-semibold text-center mt-10 mb-4 md:mt-0">Elige tu plan</h2>
+    <section id="pricing" className="flex flex-col justify-center items-center text-white min-h-screen">
+      <h2 className="mx-auto text-3xl md:text-5xl font-semibold text-center mt-10 mb-4 md:mt-0">Confirma tu plan</h2>
       <p className="mx-auto text-sm md:text-base font-light text-center md:mb-20 opacity-85">Pago unico*</p>
       <div className="flex justify-center items-center flex-wrap text-center text-balance">
         {pricingData.map((plan, i) => {
@@ -44,4 +44,4 @@ const Pricing = async () => {
   )
 }
 
-export default Pricing
+export default PricingComponet

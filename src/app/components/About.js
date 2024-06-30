@@ -6,7 +6,7 @@ const About = () => {
   const carouselRef = useRef()
   const itemRefs = useRef([])
   const [windowWidth, setWindowWidth] = useState(0)
-  const minWidth = 700
+  const minWidth = 768
 
   useEffect(() => setWindowWidth(window.innerWidth), [])
 
@@ -47,7 +47,7 @@ const About = () => {
         <div className="md:basis-1/2 h-fit flex flex-col gap-10 justify-center text-balance text-center md:text-start">
           {aboutData.map(({ title, description, statistic, statisticNumber, img }, i) =>
             <div key={i} className="w-full md:h-screen max-w-md md:max-w-xl md:max-h-[53rem] md:flex flex-col justify-center px-5 md:px-8 mx-auto md:mx-0">
-              <h2 className="text-2xl md:text-6xl font-semibold pb-8 opacity-85">{title}</h2>
+              <h2 className="text-2xl md:text-4xl lg:text-6xl font-semibold pb-8 opacity-85">{title}</h2>
               <p className="text-xs md:text-sm opacity-85">{description}</p>
               <p className="py-10">
                 <span className="text-3xl font-semibold pr-1 text-transparent bg-clip-text bg-gradient-to-r from-[#f569ff] from-[3%] via-[#8286ff] via-[55%] to-[#29d8ff] to-[100%]">
