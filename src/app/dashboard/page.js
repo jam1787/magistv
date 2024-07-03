@@ -15,7 +15,6 @@ const DashboardRoute = async () => {
       <div className="max-w-56">
         <h2 className="mt-8 mb-4 text-2xl font-medium max-w-72 text-balance text-center">¿Necesitas reportar un pago?</h2>
         <WhatsAppButton
-          reference={null}
           route='https://wa.link/azhgbi'
           data='Chatea con nosotros'
           classStyle="flex gap-3 justify-center items-center text-2xl px-3 py-4 mt-4 bg-[#00CC5D] rounded"

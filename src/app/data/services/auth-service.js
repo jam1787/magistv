@@ -11,7 +11,7 @@ export async function registerUserService(RegisterUserProps) {
       },
       body: JSON.stringify({ ...RegisterUserProps }),
       cache: "no-cache",
-    });
+    })
 
     return response.json();
   } catch (error) {
@@ -30,7 +30,7 @@ export async function loginUserService(LoginUserProps) {
       },
       body: JSON.stringify({ ...LoginUserProps }),
       cache: "no-cache",
-    });
+    })
 
     return response.json();
   } catch (error) {

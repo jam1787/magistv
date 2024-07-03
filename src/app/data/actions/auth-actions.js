@@ -66,8 +66,8 @@ export async function registerUserAction(prevState, FormData) {
     }
   }
 
-  cookies().set("jwt", responseData.jwt, config);
-  redirect("/pricing");
+  cookies().set("jwt", responseData.jwt, config)
+  redirect("/confirmation/message")
 }
 
 const schemaLogin = z.object({
@@ -124,7 +124,7 @@ export async function loginUserAction(prevState, formData) {
   }
 
   cookies().set("jwt", responseData.jwt, config);
-  redirect("/pricing");
+  redirect("/dashboard");
 }
 
 export async function logoutAction() {
