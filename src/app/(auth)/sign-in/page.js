@@ -5,6 +5,7 @@ const SignIn = () => {
   return (
     <Form
       title='Iniciar Sesión'
+      description='Ingresa tus datos para inciar sesión.'
       btnSubmitText='Ingresar'
       forgotPassword='¿Olvidaste tu contraseña?'
       otherFormQuestion='¿No tienes una cuenta?'
