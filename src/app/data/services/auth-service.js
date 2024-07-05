@@ -38,3 +38,43 @@ export async function loginUserService(LoginUserProps) {
     throw error;
   }
 }
+
+export async function confirmNewRequestService(confirmNewRequestProps) {
+  const url = new URL("/api/auth/send-email-confirmation", baseUrl)
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...confirmNewRequestProps }),
+      cache: 'no-cache',
+    })
+
+    return response.json();
+  } catch (error) {
+    console.error("New request confirmation Service Error:", error);
+    throw error;
+  }
+}
+
+export async function passwordRequestService(passwordRequestProps) {
+  const url = new URL('/api/auth/forgot-password', baseUrl)
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...passwordRequestProps }),
+      cache: 'no-cache',
+    })
+
+    return response.json();
+  } catch (error) {
+    console.error("Password request Service Error:", error);
+    throw error;
+  }
+}
