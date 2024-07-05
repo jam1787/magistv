@@ -13,6 +13,7 @@ const INITIAL_STATE = {
 
 export const Form = ({
     title,
+    description,
     btnSubmitText,
     forgotPassword,
     otherFormText,
@@ -25,13 +26,13 @@ export const Form = ({
     return (
         <div className="w-screen max-w-72 p-2 rounded-lg">
             <h1 className="text-3xl font-semibold capitalize">{title}</h1>
-            <p className='text-sm opacity-85 mt-1'>Ingresa tus datos para {title === "Iniciar Sesión" ? 'iniciar sesión' : 'registrarte'}</p>
+            <p className='text-sm opacity-85 mt-1'>{description}</p>
             <form className="mt-5" action={formAction}>
                 {!forgotPassword
                     ?
                     <>
                         <div className="text-sm">
-                            <label className='block opacity-85 mb-2' htmlFor="email">Usuario</label>
+                            <label className='block opacity-85 mb-2' htmlFor="email">Usuario *</label>
                             <input
                                 className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                                 type="text"
@@ -43,7 +44,7 @@ export const Form = ({
                             <ZodErrors error={formState?.zodErrors?.username} />
                         </div>
                         <div className="mt-3 text-sm">
-                            <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico</label>
+                            <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico *</label>
                             <input
                                 className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                                 type="email"
@@ -57,7 +58,7 @@ export const Form = ({
                     </>
 
                     : <div className="text-sm">
-                        <label className='block opacity-85 mb-2' htmlFor="email">Correo o usuario</label>
+                        <label className='block opacity-85 mb-2' htmlFor="email">Correo o usuario *</label>
                         <input
                             className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                             type="text"
@@ -70,7 +71,7 @@ export const Form = ({
                     </div>
                 }
                 <div className="mt-3 text-sm">
-                    <label htmlFor="password" className='block opacity-85 mb-2'>Contraseña</label>
+                    <label htmlFor="password" className='block opacity-85 mb-2'>Contraseña *</label>
                     <input
                         className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                         type="password"
@@ -80,7 +81,7 @@ export const Form = ({
                     />
                     <ZodErrors error={formState?.zodErrors?.password} />
                     {forgotPassword &&
-                        <Link className='block text-sm mt-3 text-end' href="#">
+                        <Link href='/request-password' className='block text-sm mt-3 text-end'>
                             {forgotPassword}
                         </Link>
                     }
@@ -92,12 +93,14 @@ export const Form = ({
                     {btnSubmitText}
                 </button>
             </form>
-            <span className="flex justify-between text-sm font-light">
-                {otherFormQuestion}
-                <Link href={otherFormLink} className="font-medium">
-                    {otherFormText}
-                </Link>
-            </span>
+            {otherFormQuestion &&
+                <span className="flex justify-between text-sm font-light">
+                    {otherFormQuestion}
+                    <Link href={otherFormLink} className="font-medium">
+                        {otherFormText}
+                    </Link>
+                </span>
+            }
             <StrapiErrors error={formState?.strapiErrors} />
         </div>
     )
