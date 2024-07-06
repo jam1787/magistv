@@ -11,19 +11,44 @@ html{
 body{
     background-color: #060817;
 }
+.mobile-hero-img{
+    background: url(../../public/heroMobile.webp);
+    background-size: cover;
+    background-position: center 20%;
+    height: 100vh;
+    width: 100%;
+}
+.mobile-hero-img::before{
+    content: '';
+    height: 101%;
+    max-height: 85.5rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+        radial-gradient(circle, rgba(6, 8, 23, .85) 25%, rgba(6, 8, 23, 0) 105%), 
+        linear-gradient(to top, rgba(6, 8, 23, 1) 0%, rgb(6 8 23 / 80%) 3%, rgb(6 8 23 / 0%) 9%, rgba(6, 8, 23, 0) 20%, rgba(6, 8, 23, 0) 100%);
+    ;
+}
 @media (min-width: 48rem) {
+    .mobile-hero-img {
+        background: none;
+    }
+    .mobile-hero-img::before{
+        all: unset;
+    }
     .hero-img::before{
         content: '';
-        height: 220%;
-        width: 62vw;
+        min-height: 110%;
+        min-width: 62vw;
         position: absolute;
         top: 0;
         left: 0;
         background: 
-            linear-gradient(to bottom, rgba(6,8,23,1) 0%, rgba(6,8,23,0) 20%, rgba(6,8,23,0) 70%, rgba(6,8,23,1) 100%),
-            radial-gradient(circle, rgba(6,8,23,0.0984768907563025) 90%, rgba(6,8,23,1) 100%),
-            linear-gradient(to right, rgb(6, 8, 23) 0%, rgba(6, 8, 23, 0) 20%)
-            ;
+            linear-gradient(to bottom, rgba(6,8,23,1) 0%, rgba(6,8,23,0) 10%, rgba(6, 8, 23, 0.2) 70%, rgba(6, 8, 23) 90%),
+            radial-gradient(circle, rgba(6,8,23,0.09) 90%, rgba(6,8,23,1) 100%),
+            linear-gradient(to right, rgb(6, 8, 23) 0%, rgba(6, 8, 23, 0) 20%);
         ;    
     }
     .about-img{
@@ -43,5 +68,11 @@ body{
     .about-img.about-img-active{
         transform: scale(1);
         opacity: 1;
+    }
+}
+@media (min-width: 170rem) {
+    .hero-img{
+        position: relative;
+        overflow: hidden;
     }
 }

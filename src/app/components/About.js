@@ -6,7 +6,7 @@ const About = () => {
   const carouselRef = useRef()
   const itemRefs = useRef([])
   const [windowWidth, setWindowWidth] = useState(0)
-  const minWidth = 768
+  const minWidth = 767
 
   useEffect(() => setWindowWidth(window.innerWidth), [])
 
@@ -41,8 +41,8 @@ const About = () => {
   }, [windowWidth])
 
   return (
-    <section ref={carouselRef} id='about'>
-      <h2 className="text-4xl md:text-6xl md:leading-[1.1] font-bold mx-auto mb-24 md:mb-0 px-4 text-center max-w-3xl text-balance text-transparent bg-clip-text bg-gradient-to-b from-[#ffffff] from-[75%] to-[#8aa3ff] to-[100%]">El contenido que amas en un mismo lugar</h2>
+    <section className="pt-24" ref={carouselRef} id='about'>
+      <h2 className="text-4xl md:text-5xl md:leading-[1.1] lg:text-6xl font-bold mx-auto mb-24 md:mb-0 px-4 text-center max-w-3xl text-balance text-transparent bg-clip-text bg-gradient-to-b from-[#ffffff] from-[75%] to-[#8aa3ff] to-[100%]">El contenido que amas en un mismo lugar</h2>
       <div className="relative w-full flex flex-col md:flex-row gap-6 justify-center 2xl:container 2xl:mx-auto md:pr-8">
         <div className="md:basis-1/2 h-fit flex flex-col gap-10 justify-center text-balance text-center md:text-start">
           {aboutData.map(({ title, description, statistic, statisticNumber, img }, i) =>
@@ -61,8 +61,8 @@ const About = () => {
             </div>
           )}
         </div>
-        {windowWidth >= minWidth &&
-          <div className="md:block md:basis-1/2 sticky top-0 right-0 h-screen md:max-h-[53rem]">
+        {windowWidth > minWidth &&
+          <div className="block basis-1/2 sticky top-0 right-0 h-screen max-h-[53rem]">
             {aboutImgs.map(({ src, alt }, i) =>
               <div
                 key={i}
