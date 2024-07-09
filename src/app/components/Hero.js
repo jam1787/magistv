@@ -32,7 +32,7 @@ const Hero = async () => {
       </header>
       <UseWindowWidth minWidth={minWidth}>
         <footer className='hero-img overflow-hidden absolute top-[50%] right-0 -translate-y-1/2 -z-10 md:w-[62vw] max-w-[90rem] xl:max-h-[40rem] object-cover'>
-          <img src='./homeDesktop.webp' alt='Imagen de peliculas, series y canales de MagisTV' />
+          <img src='./homeDesktop.webp' alt='Imagen de peliculas, series y canales de MagisTV'/>
         </footer>
       </UseWindowWidth>
     </section>

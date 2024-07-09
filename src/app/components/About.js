@@ -56,7 +56,7 @@ const About = () => {
                 {statistic}
               </p>
               {windowWidth <= minWidth &&
-                <img className="max-w-[90%] mx-auto" src={img} alt={title} />
+                <img className="max-w-[90%] mx-auto" src={img} alt={title} loading="lazy"/>
               }
             </div>
           )}
@@ -69,7 +69,7 @@ const About = () => {
                 ref={el => itemRefs.current[i] = el}
                 className={i === 0 ? 'about-img about-img-active' : 'about-img hidden'}
               >
-                <img className="max-w-[90%]" src={src} alt={alt} />
+                <img className="max-w-[90%]" src={src} alt={alt} loading="lazy"/>
               </div>
             )}
           </div>

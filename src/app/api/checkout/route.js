@@ -6,8 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 export async function POST(req) {
     const user = await getUserMeLoader()
-    const {email} = user.data
-    const {planName, price, description} = await req.json()
+    const { email } = user.data
+    const { planName, price, description, timeInDays } = await req.json()
 
     const session = await stripe.checkout.sessions.create({
         success_url: process.env.NEXT_PUBLIC_SUCCESS_URL,
@@ -26,6 +26,10 @@ export async function POST(req) {
             },
         ],
         customer_email: email,
+        metadata: {
+            plan: planName,
+            subscriptionDuration: timeInDays
+        },
         mode: "payment"
     })
 
