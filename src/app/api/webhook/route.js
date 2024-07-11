@@ -23,10 +23,10 @@ export async function POST(req) {
 
     switch (event.type) {
         case "checkout.session.completed":
-            const checkoutSessionCompleted = event.data.object
+            const {created, metadata, payment_status, customer_email, amount_total, payment_intent} = event.data.object
 
-            const paymentDate = new Date(checkoutSessionCompleted.created * 1000)
-            const subscriptionDuration = checkoutSessionCompleted.metadata.subscriptionDuration
+            const paymentDate = new Date(created * 1000)
+            const subscriptionDuration = metadata.subscriptionDuration
             const subscriptionEndDate = new Date(paymentDate)
             subscriptionEndDate.setDate(subscriptionEndDate.getDate() + parseInt(subscriptionDuration))
             
@@ -34,12 +34,13 @@ export async function POST(req) {
             try {
                 const orderData = {
                     data: {
-                        status: checkoutSessionCompleted.payment_status.toString(),
-                        email: checkoutSessionCompleted.customer_email.toString(),
-                        amount: checkoutSessionCompleted.amount_total / 100,
+                        status: payment_status.toString(),
+                        email: customer_email.toString(),
+                        plan: metadata.plan.toString(),
+                        amount: amount_total / 100,
                         paymentDate: paymentDate.toISOString(),
                         subscriptionEndDate: subscriptionEndDate.toISOString(),
-                        paymentID: checkoutSessionCompleted.payment_intent.toString()
+                        paymentID: payment_intent.toString()
                     }
                 }
                 const url = new URL("/api/orders", strapiBaseURL)
@@ -59,13 +60,10 @@ export async function POST(req) {
                     return NextResponse.json({ error: 'Error creating order in Strapi' }, { status: 500 })
                 }
 
-                console.log('Order created in Strapi successfully')
             } catch (error) {
                 console.error('Error creating order in Strapi:', error)
                 return NextResponse.json({ error: error.message }, { status: 500 })
             }
-            
-            console.log({ checkoutSessionCompleted })
             break
 
         default:
