@@ -50,6 +50,27 @@ export async function registerUserAction(prevState, FormData) {
     }
   }
 
+  const recaptchaToken = FormData.get('recaptchaToken');
+  const recaptchaResponse = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY,
+      response: recaptchaToken
+    })
+  }).then(res => res.json())
+
+  if (!recaptchaResponse.success) {
+    return {
+      ...prevState,
+      zodErrors: null,
+      strapiErrors: null,
+      message: "La validación de reCAPTCHA falló. Por favor, intente nuevamente."
+    }
+  }
+
   const responseData = await registerUserService(validatedFields.data)
 
   if (!responseData) {
@@ -104,6 +125,27 @@ export async function loginUserAction(prevState, formData) {
       ...prevState,
       zodErrors: validatedFields.error.flatten().fieldErrors,
       message: "Ocurrió un error, por favor verifique los campos.",
+    }
+  }
+
+  const recaptchaToken = formData.get('recaptchaToken');
+  const recaptchaResponse = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY,
+      response: recaptchaToken
+    })
+  }).then(res => res.json())
+
+  if (!recaptchaResponse.success) {
+    return {
+      ...prevState,
+      zodErrors: null,
+      strapiErrors: null,
+      message: "La validación de reCAPTCHA falló. Por favor, intente nuevamente."
     }
   }
 

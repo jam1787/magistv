@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useFormState } from 'react-dom'
 import { ZodErrors } from './ZodErrors'
 import { StrapiErrors } from './StrapiErrors'
+import { useEffect, useState } from 'react'
 
 const INITIAL_STATE = {
     data: null,
@@ -22,12 +23,48 @@ export const Form = ({
     userAction
 }) => {
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
+    const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+    useEffect(() => {
+        const loadRecaptcha = () => {
+            const script = document.createElement('script')
+            script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`
+            script.async = true
+            script.onload = () => {
+                window.grecaptcha.ready(() => {
+                    window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, { action: 'submit' }).then((token) => {
+                        setRecaptchaToken(token);
+                    })
+                })
+            }
+            document.body.appendChild(script)
+        }
+
+        if (!window.grecaptcha) 
+            loadRecaptcha()
+        else {
+            window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, { action: 'submit' }).then((token) => 
+                setRecaptchaToken(token)
+            )
+        }
+    }, [])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (!recaptchaToken) {
+            alert('Por favor, complete el reCAPTCHA.');
+            return;
+        }
+        const formData = new FormData(e.target);
+        formData.append('recaptchaToken', recaptchaToken);
+        await formAction(formData);
+    }
 
     return (
         <div className="w-screen max-w-72 p-2 rounded-lg">
             <h1 className="text-3xl font-semibold capitalize">{title}</h1>
             <p className='text-sm opacity-85 mt-1'>{description}</p>
-            <form className="mt-5" action={formAction}>
+            <form className="mt-5" onSubmit={() => handleSubmit(event)}>
                 {!forgotPassword
                     ?
                     <>
