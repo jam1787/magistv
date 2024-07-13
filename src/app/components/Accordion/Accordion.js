@@ -1,9 +1,9 @@
 "use client"
 import { useState } from 'react'
 import { AccordionAnimation } from './AccordionAnimation'
-import Link from 'next/link'
+import { DownloadLink } from '@/app/utils/downloadLink'
 
-export const Accordion = ({ question, answer, allowDevices, devices, downloadLink }) => {
+export const Accordion = ({ question, answer, allowDevices, devices, linkMobile, linkTV }) => {
     const [accordionOpen, setAccordionOpen] = useState(false)
 
     return (
@@ -36,15 +36,20 @@ export const Accordion = ({ question, answer, allowDevices, devices, downloadLin
                             </ul>
                         )
                     }
-                    {downloadLink &&
-                        <Link 
-                            target='_blank'
-                            rel='no-referrer'
-                            className='block mt-3 underline'
-                            href={downloadLink}
-                        >
-                            Descargar MagisTv
-                        </Link>
+                    {linkMobile
+                        && <>
+                            <DownloadLink
+                                route={linkMobile}
+                                classN='block mt-3 underline underline-offset-2'
+                                text='Descargar para celulares'
+                            />
+
+                            <DownloadLink
+                                route={linkTV}
+                                classN='block mt-3 underline underline-offset-2'
+                                text='Descargar para TV'
+                            />
+                        </>
                     }
                 </div>
             </div>

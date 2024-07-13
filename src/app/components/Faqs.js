@@ -5,7 +5,7 @@ const faqsData = [
     {question: '¿Qué tan seguro es la aplicación MagisTV?', answer: 'Siempre y cuando lo descarguen de los Links proporcionados por nosotros no representa ningún riesgo. Como todo en internet, tratando de replicar el éxito de Magis han salido copias maliciosas que introducen Publicidad en Tu teléfono abusando de los Permisos que le Puedan otorgar.'},
     {question: '¿Cuales son los dispositivos compatibles?', answer: 'Basicamente todo Dispositivos Android donde puedas instalar la aplicacion de Magis es compatible.', devices: true },
     {question: '¿Cuántos dispositivos puedo conectar al mismo tiempo?', answer: 'Podrás visualizar hasta 3 pantallas consecutivas, nuestro servicio se vende en cuentas triples o para 3 dispositivos.'},
-    {question: '¿Dónde se puede descargar la aplicación?', answer: 'Puedes descargar la aplicación desde el siguiente link:', link: 'http://descargadeprueba.com'}
+    {question: '¿Dónde se puede descargar la aplicación?', answer: 'Puedes descargar la aplicación desde los siguiente links:', linkMobile: 'https://www.magis-tv.cc/apps/magis-celular.apk?0708', linkTV: 'https://www.magis-tv.dev/apps/magis-tv-video.apk'}
 ]
 
 const allowDevices = [{
@@ -21,14 +21,15 @@ export const Faqs = () => {
           <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">Preguntas frecuentes</h2>
         </div>
         <div className="p-2 w-[90%] mx-auto max-w-[50rem] rounded-lg">
-          {faqsData.map(({question, answer, devices, link}, i) =>
+          {faqsData.map(({question, answer, devices, linkMobile, linkTV}, i) =>
             <Accordion
               key={i}
               question={question}
               answer={answer}
               allowDevices={allowDevices}
               devices={devices}
-              downloadLink={link}
+              linkMobile={linkMobile}
+              linkTV={linkTV}
             />
           )}
         </div> 

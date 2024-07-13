@@ -64,7 +64,7 @@ export const Form = ({
         <div className="w-screen max-w-72 p-2 rounded-lg">
             <h1 className="text-3xl font-semibold capitalize">{title}</h1>
             <p className='text-sm opacity-85 mt-1'>{description}</p>
-            <form className="mt-5" onSubmit={() => handleSubmit(event)}>
+            <form className="mt-5" onSubmit={handleSubmit}>
                 {!forgotPassword
                     ?
                     <>

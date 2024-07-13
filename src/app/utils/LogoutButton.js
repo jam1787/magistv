@@ -5,7 +5,7 @@ const LogoutButton = ({data, text}) => {
     <form action={logoutAction}>
         <button 
             type="submit" 
-            className="flex gap-3 items-center text-base py-3 px-4 border border-red-500 rounded-md hover:bg-red-700 transition">
+            className="flex gap-3 justify-center items-center text-base py-2.5 px-3 w-full mb-5 max-w-52 border border-red-600 rounded-md hover:bg-red-600 transition">
             {text}{data}
         </button>
     </form>
