@@ -1,33 +1,11 @@
-const getOrdersData = async (path) => {
-    const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
-    const strapiToken = process.env.STRAPI_ORDER_TOKEN
-    try {
-        const res = await fetch(strapiBaseUrl + path,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${strapiToken}`,
-                },
-                cache: 'no-cache'
-            }
-        )
-        const data = await res.json()
-        return data.data.length > 0 ? data.data : null
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const OrdersTable = async ({ email }) => {
-    const orders = await getOrdersData(`/api/orders?filters[email][$eq]=${email}`)
-
+export const OrdersTable = async ({ orders }) => {
     if(!orders) 
         return <p>No se encontraron ordenes registradas.</p>
 
     return (
-        <div className="overflow-auto max-h-screen rounded-lg border border-gray-200  text-gray-900">
-            <table className="w-full border-collapse bg-slate-100 text-left text-sm text-gray-700">
-                <thead className="bg-gray-100 text-center">
+        <div className="overflow-auto w-full max-h-screen rounded-lg border border-gray-400 ">
+            <table className="w-full border-collapse text-left text-sm text-white">
+                <thead className="text-center">
                     <tr>
                         <th scope="col" className="p-4 md:p-6 font-medium">Plan</th>
                         <th scope="col" className="p-4 md:p-6 font-medium">Estado</th>
@@ -40,12 +18,12 @@ export const OrdersTable = async ({ email }) => {
                 {orders.map(({ id, attributes }) => {
                     const { status, plan, amount, paymentDate, subscriptionEndDate, paymentID } = attributes
                     return (
-                        <tbody key={id} className="divide-y divide-gray-200 border-t border-gray-200 text-center">
+                        <tbody key={id} className="divide-y divide-gray-200 border-t border-gray-400 text-center">
                             <tr>
                                 <th className="p-4 font-medium">{plan}</th>
                                 <td className="p-4">
                                     <span
-                                        className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-600"
+                                        className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600"
                                     >
                                         <span className="h-1.5 w-1.5 rounded-full bg-green-600"></span>
                                         {status === 'paid' && 'Pagado'}
