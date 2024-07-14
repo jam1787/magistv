@@ -5,6 +5,7 @@ import { MdLogout } from "react-icons/md"
 import { OrdersTable } from "./OrdersTable"
 import { getOrdersData } from "../data/services/get-orders"
 import { DownloadLink } from "../utils/downloadLink"
+import { LastOrder } from "./LastOrder"
 
 const DashboardRoute = async () => {
   const user = await getUserMeLoader()
@@ -34,6 +35,7 @@ const DashboardRoute = async () => {
       </div>
       <div className="mt-10 lg:mt-56">
         <p className="mb-10 text-2xl font-semibold">Correo: {email}</p>
+        <LastOrder orders={orders} email={email}/>
         <h2 className="mb-3 text-lg font-semibold">Tus ordenes de compra:</h2>
         <OrdersTable orders={orders} />
         <div className="sm:flex gap-4 items-center mt-6">

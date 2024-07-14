@@ -285,7 +285,3 @@ export async function passwordResetAction(prevState, formData) {
     };
   }
 }
-
-// export async function confirmNewRequestAction() {
-
-// }

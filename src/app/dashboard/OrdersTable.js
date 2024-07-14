@@ -1,5 +1,15 @@
-export const OrdersTable = async ({ orders }) => {
-    if(!orders) 
+'use client'
+import { useEffect, useState } from "react"
+
+export const OrdersTable = ({ orders }) => {
+    const [order, setOrder] = useState([])
+
+    useEffect(() => {
+        const sortedOrders = orders.sort((a, b) => new Date(b.paymentDate) - new Date(a.paymentDate))
+        setOrder(sortedOrders)
+    }, [])
+
+    if(!order || order.length === 0) 
         return <p>No se encontraron ordenes registradas.</p>
 
     return (
@@ -15,10 +25,9 @@ export const OrdersTable = async ({ orders }) => {
                         <th scope="col" className="p-4 md:p-6 font-medium">Identificador</th>
                     </tr>
                 </thead>
-                {orders.map(({ id, attributes }) => {
-                    const { status, plan, amount, paymentDate, subscriptionEndDate, paymentID } = attributes
+                {order.map(({ status, plan, amount, paymentDate, subscriptionEndDate, paymentID }, i) => {
                     return (
-                        <tbody key={id} className="divide-y divide-gray-200 border-t border-gray-400 text-center">
+                        <tbody key={i} className="divide-y divide-gray-200 border-t border-gray-400 text-center">
                             <tr>
                                 <th className="p-4 font-medium">{plan}</th>
                                 <td className="p-4">

@@ -12,7 +12,7 @@ export const getOrdersData = async (path) => {
             }
         )
         const data = await res.json()
-        return data.data.length > 0 ? data.data : null
+        return data.data.length > 0 ? data.data.map(order => order.attributes) : null
     } catch (error) {
         console.log(error)
     }
