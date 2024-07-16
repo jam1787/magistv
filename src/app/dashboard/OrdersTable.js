@@ -4,13 +4,13 @@ import { useEffect, useState } from "react"
 export const OrdersTable = ({ orders }) => {
     const [order, setOrder] = useState([])
 
+    if (!orders || orders.length === 0)
+        return <p>No se encontraron ordenes registradas.</p>
+
     useEffect(() => {
         const sortedOrders = orders.sort((a, b) => new Date(b.paymentDate) - new Date(a.paymentDate))
         setOrder(sortedOrders)
     }, [])
-
-    if(!order || order.length === 0) 
-        return <p>No se encontraron ordenes registradas.</p>
 
     return (
         <div className="overflow-auto w-full max-h-screen rounded-lg border border-gray-400 ">
@@ -44,7 +44,8 @@ export const OrdersTable = ({ orders }) => {
                                 <td className="p-4 text-xs opacity-85">{paymentID}</td>
                             </tr>
                         </tbody>
-                    )}
+                    )
+                }
                 )}
             </table>
         </div>

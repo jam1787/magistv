@@ -22,23 +22,25 @@ const DashboardRoute = async () => {
           data={<MdLogout className="text-2xl" />}
           text='Cerrar sesión'
         />
-        <DownloadLink 
+        <DownloadLink
           classN="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 max-w-52 text-center transition rounded-2xl"
           route="https://www.magis-tv.cc/apps/magis-celular.apk?0708"
           text="Descargar para celulares"
         />
-        <DownloadLink 
+        <DownloadLink
           classN="px-4 py-2 text-sm border border-blue-600 hover:bg-blue-600 max-w-52 text-center transition rounded-2xl"
           route="https://www.magis-tv.dev/apps/magis-tv-video.apk"
           text="Descargar para TV"
         />
       </div>
       <div className="mt-10 lg:mt-56">
-        <p className="mb-10 text-2xl font-semibold">Correo: {email}</p>
-        <LastOrder orders={orders} email={email}/>
-        <h2 className="mb-3 text-lg font-semibold">Tus ordenes de compra:</h2>
+        <h2 className="text-2xl font-semibold">Información de tu cuenta:</h2>
+        <p className="mb-8">Correo: {email}</p>
+        <h3 className="text-lg font-medium">Estado de tu suscripción:</h3>
+        <LastOrder orders={orders} email={email} />
+        <h2 className="mt-8 mb-3 text-lg font-medium">Tus ordenes de compra:</h2>
         <OrdersTable orders={orders} />
-        <div className="sm:flex gap-4 items-center mt-6">
+        <div className="sm:flex gap-4 items-center mt-8">
           <h2 className="mb-8 sm:mb-0 text-xl font-medium text-balance text-center sm:text-start">¿Necesitas reportar un pago?</h2>
           <WhatsAppButton
             route='https://wa.link/c6kr07'

@@ -25,6 +25,17 @@ export const Form = ({
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
     const [recaptchaToken, setRecaptchaToken] = useState(null);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (!recaptchaToken) {
+            alert('Por favor, complete el reCAPTCHA.');
+            return;
+        }
+        const formData = new FormData(e.target);
+        formData.append('recaptchaToken', recaptchaToken);
+        await formAction(formData);
+    }
+
     useEffect(() => {
         const loadRecaptcha = () => {
             const script = document.createElement('script')
@@ -47,18 +58,7 @@ export const Form = ({
                 setRecaptchaToken(token)
             )
         }
-    }, [])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!recaptchaToken) {
-            alert('Por favor, complete el reCAPTCHA.');
-            return;
-        }
-        const formData = new FormData(e.target);
-        formData.append('recaptchaToken', recaptchaToken);
-        await formAction(formData);
-    }
+    }, [handleSubmit])
 
     return (
         <div className="w-screen max-w-72 p-2 rounded-lg">
