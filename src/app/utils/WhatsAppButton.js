@@ -11,7 +11,7 @@ const WhatsAppButton = ({ route, classStyle, data, reference }) => {
       rel="noopener noreferrer"
     >
       <IoLogoWhatsapp />
-      <span className="text-sm">{data}</span>
+      <span>{data}</span>
     </Link>
   )
 }

@@ -1,4 +1,6 @@
-import {UseWindowWidth} from '../utils/handleResize'
+import Link from 'next/link'
+import { UseWindowWidth } from '../utils/handleResize'
+import WhatsAppButton from '../utils/WhatsAppButton'
 import LinkComponent from './LinkComponent'
 
 const getStrapiData = async (path) => {
@@ -14,7 +16,7 @@ const getStrapiData = async (path) => {
 
 const Hero = async () => {
   const strapiData = await getStrapiData('/api/home-page')
-  const {title, description} = strapiData.data.attributes
+  const { title, description } = strapiData.data.attributes
   const minWidth = 767
 
   return (
@@ -25,14 +27,25 @@ const Hero = async () => {
         ">
           {title}
         </h1>
-        <p className='opacity-90 text-sm sm:text-base leading-relaxed font-light py-4 pb-6 md:py-6 md:pb-10 mb-4 md:text-base md:w-90 md:mx-auto lg:text-lg'>
+        <p className='opacity-90 text-sm sm:text-base leading-relaxed font-light pt-5 pb-2 md:py-6 md:pb-10 mb-4 md:text-base md:w-90 md:mx-auto lg:text-lg'>
           {description}
         </p>
-        <LinkComponent route='#pricing' text='Contrata ahora' classStyle='link-blue-bg text-white px-12 py-3.5 font-medium rounded-full transtion hover:opacity-90' />
+        <div className="flex flex-col gap-2 items-center md:flex-row md:gap-4">
+          <LinkComponent
+            route='#pricing'
+            text='Contrata ahora'
+            classStyle='link-blue-bg text-white px-12 py-3 font-medium rounded-full transtion hover:opacity-90'
+          />
+          <LinkComponent
+            route='create-account'
+            text='Solicita una demo'
+            classStyle='link-hero-demo px-10 py-2 bg-transparent text-white font-medium'
+          />
+        </div>
       </header>
       <UseWindowWidth minWidth={minWidth}>
         <footer className='hero-img overflow-hidden absolute top-[50%] right-0 -translate-y-1/2 -z-10 md:w-[62vw] max-w-[90rem] xl:max-h-[40rem] object-cover'>
-          <img src='./homeDesktop.webp' alt='Imagen de peliculas, series y canales de MagisTV'/>
+          <img src='./homeDesktop.webp' alt='Imagen de peliculas, series y canales de MagisTV' />
         </footer>
       </UseWindowWidth>
     </section>

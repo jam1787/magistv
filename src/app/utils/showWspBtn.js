@@ -23,7 +23,7 @@ export const ShowWspBtn = () => {
     return (
         <WhatsAppButton
             reference={whatsappButton}
-            classStyle="hidden fixed bottom-3 right-5 md:bottom-5 md:right-7 p-2.5 bg-[#00CC5D] md:p-3 z-20 text-3xl md:text-4xl justify-center items-center rounded-full"
+            classStyle="hidden fixed bottom-3 right-5 md:bottom-5 md:right-7 p-3 bg-[#00CC5D] md:p-3.5 z-20 text-3xl md:text-4xl justify-center items-center rounded-full"
             route='https://wa.link/71fjq4'
         />
     )
