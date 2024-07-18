@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import LinkComponent from "../components/LinkComponent"
+import WhatsAppButton from "../utils/WhatsAppButton"
 
 export const LastOrder = ({ orders }) => {
     const [isSubscriptionActive, setIsSubscriptionActive] = useState()
@@ -10,21 +11,28 @@ export const LastOrder = ({ orders }) => {
     if (!orders || orders.length === 0)
         return <>
             <p>No tienes ninguna suscripción.</p>
-            <LinkComponent
-                text='Contrata ahora'
-                classStyle='mt-3 inline-block py-2 px-10 bg-gradient-to-b from-[#fff] from-[60%] via-[#8286ff] via-[100%]'
-                route='pricing'
-            />
+            <div className="flex gap-3 mt-3">
+                <LinkComponent
+                    text='Contrata ahora'
+                    classStyle='inline-block mt-3 py-2 px-10 bg-white'
+                    route='pricing'
+                />
+                <WhatsAppButton
+                    data='Obtener demo'
+                    route='https://wa.link/9j8y75'
+                    classStyle='flex gap-2 justify-center items-center text-white rounded-full mt-3 py-2 px-10 bg-[#8286ff]'
+                />
+            </div>
         </>
 
     useEffect(() => {
         const filterOrders = () => {
             if (orders.length > 0) {
                 const sortedOrders = orders.sort((a, b) => new Date(b.paymentDate) - new Date(a.paymentDate))
-        
+
                 const latestOrder = sortedOrders[0]
                 setLastOrder(latestOrder)
-        
+
                 const subscriptionEndDate = new Date(latestOrder.subscriptionEndDate)
                 setIsSubscriptionActive(subscriptionEndDate > new Date())
             }
