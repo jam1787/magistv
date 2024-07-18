@@ -2,21 +2,11 @@ import Link from 'next/link'
 import { UseWindowWidth } from '../utils/handleResize'
 import WhatsAppButton from '../utils/WhatsAppButton'
 import LinkComponent from './LinkComponent'
-
-const getStrapiData = async (path) => {
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
-  try {
-    const res = await fetch(baseUrl + path, { cache: 'no-store' })
-    const data = await res.json()
-    return data
-  } catch (error) {
-    console.error(error)
-  }
-}
+import { getStrapiData } from '../data/services/get-hero-data'
 
 const Hero = async () => {
   const strapiData = await getStrapiData('/api/home-page')
-  const { title, description } = strapiData.data.attributes
+  const { title, description } = strapiData
   const minWidth = 767
 
   return (
