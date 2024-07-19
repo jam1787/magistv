@@ -13,7 +13,7 @@ export const OrdersTable = ({ orders }) => {
     }, [])
 
     return (
-        <div className="overflow-auto w-full max-h-screen rounded-lg border border-gray-400 ">
+        <div className="overflow-auto w-full max-h-screen rounded-lg border border-slate-500">
             <table className="w-full border-collapse text-left text-sm text-white">
                 <thead className="text-center">
                     <tr>

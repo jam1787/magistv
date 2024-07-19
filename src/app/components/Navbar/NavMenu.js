@@ -18,7 +18,7 @@ const NavMenu = ({
         </Link>
         <ul className={`${menuClick ? menuStyles + menuActiveStyles : menuStyles}`}>
             {navLinks.map(({name, route}, i) => 
-                <li key={i}>
+                <li key={i} className="transition-colors duration-300 hover:text-blue-200">
                     <Link
                         href={route}
                         onClick={()=> setMenuClick(false)}
