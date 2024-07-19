@@ -35,12 +35,12 @@ const DashboardRoute = async () => {
       </div>
       <div className="lg:mt-56">
         <h2 className="text-lg font-semibold">Accesos a tu cuenta de MagisTV:</h2>
-        <div className="inline-block my-3 py-8 px-4 border border-slate-500 rounded-md">
+        <div className="inline-block w-full my-3 py-8 px-4 border border-slate-500 rounded-md">
           <h3>Correo: <span className="text-lg font-semibold text-end">{usermagistv}</span></h3>
           <h3>Contraseña: <span className="text-lg font-semibold text-end">{passwordmagistv}</span></h3>
         </div>
         <h2 className="my-3 text-lg font-medium">Estado de tu suscripción:</h2>
-        <div className="inline-block py-6 px-4 border border-slate-500 rounded-md">
+        <div className="inline-block w-full py-6 px-4 border border-slate-500 rounded-md">
           <LastOrder orders={orders} email={email} />
         </div>
         <h2 className="mt-8 mb-3 text-lg font-medium">Tus ordenes de compra:</h2>

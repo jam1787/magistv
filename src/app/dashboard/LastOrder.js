@@ -10,11 +10,11 @@ export const LastOrder = ({ orders }) => {
 
     if (!orders || orders.length === 0)
         return <>
-            <p>No tienes ninguna suscripción.</p>
-            <div className="flex gap-3 mt-3">
+            <p className="text-center">No tienes ninguna suscripción.</p>
+            <div className="flex flex-col w-full md:flex-row justify-center md:gap-4  mt-3">
                 <LinkComponent
                     text='Contrata ahora'
-                    classStyle='inline-block mt-3 py-2 px-10 bg-white'
+                    classStyle='inline-block text-center mt-3 py-2 px-10 bg-white'
                     route='pricing'
                 />
                 <WhatsAppButton
@@ -43,7 +43,7 @@ export const LastOrder = ({ orders }) => {
     return (
         <>
             {lastOrder &&
-                <div className="my-3">
+                <div className="my-3 text-center">
                     {isSubscriptionActive
                         ? <>
                             <h3 >
@@ -56,7 +56,7 @@ export const LastOrder = ({ orders }) => {
                             <LinkComponent
                                 text='Renovar Suscripción'
                                 route='pricing'
-                                classStyle='py-3 px-10 bg-gradient-to-b from-[#fff] from-[60%] via-[#8286ff] via-[100%]'
+                                classStyle='py-3 px-10'
                             />
                         </>
                     }
