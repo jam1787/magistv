@@ -251,7 +251,7 @@ export async function passwordResetAction(prevState, formData) {
 
   try {
     const strapiResponse = await fetch(
-      process.env.NEXT_PUBLIC_STRAPI_URL + '/api/auth/reset-password',
+      process.env.STRAPI_URL + '/api/auth/reset-password',
       {
         method: 'POST',
         headers: {

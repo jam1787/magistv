@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
+const baseUrl = process.env.STRAPI_URL
 
 export async function registerUserService(RegisterUserProps) {
   const url = new URL("/api/auth/local/register", baseUrl);

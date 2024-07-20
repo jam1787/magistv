@@ -20,7 +20,7 @@ const ConfirmationSubmit = async({ searchParams }) => {
 
     try {
         const strapiResponse = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/email-confirmation?confirmation=${confirmationToken}`
+            `${process.env.STRAPI_URL}/api/auth/email-confirmation?confirmation=${confirmationToken}`
         )
         if (!strapiResponse.ok) {
             let error = '';

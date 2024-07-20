@@ -4,7 +4,7 @@ import Stripe from "stripe"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const endPointSecret = process.env.STRIPE_ENDPOINT_SECRET
-const strapiBaseURL = process.env.NEXT_PUBLIC_STRAPI_URL
+const strapiBaseURL = process.env.STRAPI_URL
 const strapiOrdenToken = process.env.STRAPI_ORDER_TOKEN
 
 export async function POST(req) {

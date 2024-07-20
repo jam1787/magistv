@@ -1,5 +1,5 @@
 export const getOrdersData = async (path) => {
-    const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
+    const strapiBaseUrl = process.env.STRAPI_URL
     const strapiToken = process.env.STRAPI_ORDER_TOKEN
     try {
         const res = await fetch(strapiBaseUrl + path,
