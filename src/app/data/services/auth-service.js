@@ -49,7 +49,7 @@ export async function confirmNewRequestService(confirmNewRequestProps) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ ...confirmNewRequestProps }),
-      cache: 'no-store',
+      cache: 'no-cache',
     })
 
     return response.json();
@@ -69,7 +69,7 @@ export async function passwordRequestService(passwordRequestProps) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ ...passwordRequestProps }),
-      cache: 'no-store',
+      cache: 'no-cache',
     })
 
     return response.json();
