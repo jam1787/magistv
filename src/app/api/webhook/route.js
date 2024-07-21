@@ -52,7 +52,7 @@ export async function POST(req) {
                         'Authorization': `Bearer ${strapiOrdenToken}`
                     },
                     body: JSON.stringify(orderData),
-                    cache: "no-cache"
+                    cache: "no-store"
                 })
 
                 if (!response.ok) {

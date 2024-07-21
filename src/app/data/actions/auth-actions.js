@@ -262,7 +262,7 @@ export async function passwordResetAction(prevState, formData) {
           passwordConfirmation,
           code: prevState.code,
         }),
-        cache: 'no-cache',
+        cache: 'no-store',
       }
     )
     if (!strapiResponse.ok) {

@@ -8,7 +8,7 @@ export const getOrdersData = async (path) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${strapiToken}`,
                 },
-                cache: 'no-cache'
+                cache: 'no-store'
             }
         )
         const data = await res.json()
