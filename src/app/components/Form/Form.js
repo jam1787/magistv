@@ -58,7 +58,7 @@ export const Form = ({
                 setRecaptchaToken(token)
             )
         }
-    }, [handleSubmit])
+    }, [])
 
     return (
         <div className="w-screen max-w-72 p-2 rounded-lg">
