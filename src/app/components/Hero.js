@@ -15,10 +15,10 @@ const Hero = async () => {
         <h1 className="text-[2.7em] font-bold leading-tight sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-[1.15]
           text-transparent bg-clip-text bg-gradient-to-b from-white from-[55%] to-[#90b9ff] md:bg-[radial-gradient(circle_400px_at_10%_0%,_#ffffff,_#90b9ff)]
         ">
-          {title}
+          {title ? title : 'Titulo no encontrado'}
         </h1>
         <p className='opacity-90 text-sm sm:text-base leading-relaxed font-light pt-5 pb-2 md:py-6 md:pb-10 mb-4 md:text-base md:w-90 md:mx-auto lg:text-lg'>
-          {description}
+          {description ? description : 'Descripcion no encontrada'}
         </p>
         <div className="flex flex-col gap-2 items-center md:flex-row md:gap-4">
           <LinkComponent
