@@ -21,15 +21,21 @@ export const Accordion = ({ question, answer, allowDevices, devices, linkMobile,
                     {devices &&
                         allowDevices.map(({ tv, stream, mobile }, i) =>
                             <ul key={i} className='pt-4'>
-                                <h3 className='my-2 text-base'>Smart TVs</h3>
+                                <li>
+                                    <h3 className='my-2 text-base'>Smart TVs</h3>
+                                </li>
                                 {tv.map((tvs, i) =>
                                     <li key={i} className='pt-1.5 pl-3 opacity-85'>{tvs}</li>
                                 )}
-                                <h3 className='my-2 text-base'>Dispositivos de streaming</h3>
+                                <li>
+                                    <h3 className='my-2 text-base'>Dispositivos de streaming</h3>
+                                </li>
                                 {stream.map((streams, i) =>
                                     <li key={i} className='pt-1.5 pl-3 opacity-85'>{streams}</li>
                                 )}
-                                <h3 className='my-2 text-base'>Dispositivos móviles</h3>
+                                <li>
+                                    <h3 className='my-2 text-base'>Dispositivos móviles</h3>
+                                </li>
                                 {mobile.map((mobiles, i) =>
                                     <li key={i} className='pt-1.5 pl-3 opacity-85'>{mobiles}</li>
                                 )}

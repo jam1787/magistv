@@ -23,17 +23,17 @@ export const Form = ({
     userAction
 }) => {
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
-    const [recaptchaToken, setRecaptchaToken] = useState(null);
+    const [recaptchaToken, setRecaptchaToken] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!recaptchaToken) {
-            alert('Por favor, complete el reCAPTCHA.');
-            return;
+            alert('Por favor, complete el reCAPTCHA.')
+            return
         }
-        const formData = new FormData(e.target);
-        formData.append('recaptchaToken', recaptchaToken);
-        await formAction(formData);
+        const formData = new FormData(e.target)
+        formData.append('recaptchaToken', recaptchaToken)
+        await formAction(formData)
     }
 
     useEffect(() => {
@@ -51,10 +51,10 @@ export const Form = ({
             document.body.appendChild(script)
         }
 
-        if (!window.grecaptcha) 
+        if (!window.grecaptcha)
             loadRecaptcha()
         else {
-            window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, { action: 'submit' }).then((token) => 
+            window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, { action: 'submit' }).then((token) =>
                 setRecaptchaToken(token)
             )
         }
@@ -69,7 +69,7 @@ export const Form = ({
                     ?
                     <>
                         <div className="text-sm">
-                            <label className='block opacity-85 mb-2' htmlFor="email">Usuario *</label>
+                            <label className='block opacity-85 mb-2' htmlFor="username">Usuario *</label>
                             <input
                                 className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                                 type="text"
@@ -95,7 +95,7 @@ export const Form = ({
                     </>
 
                     : <div className="text-sm">
-                        <label className='block opacity-85 mb-2' htmlFor="email">Correo o usuario *</label>
+                        <label className='block opacity-85 mb-2' htmlFor="identifier">Correo o usuario *</label>
                         <input
                             className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
                             type="text"

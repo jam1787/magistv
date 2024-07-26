@@ -23,7 +23,7 @@ body {
 }
 .mobile-hero-img::before {
     content: '';
-    height: 101%;
+    height: 101vh;
     max-height: 85.5rem;
     width: 100%;
     position: absolute;

@@ -9,7 +9,7 @@ import {
 import { redirect } from 'next/navigation'
 
 const config = {
-  maxAge: 60 * 60 * 24 * 7, // 1 week
+  maxAge: 60 * 60 * 24 * 7,
   path: "/",
   domain: process.env.HOST ?? "localhost",
   httpOnly: true,
@@ -19,8 +19,8 @@ const config = {
 const schemaRegister = z.object({
   username: z.string().min(3, {
     message: "El nombre de usuario debe ser mayor a 3 caracarteres."
-  }).max(20, {
-    message: "El nombre de usuario debe ser menor a 20 caracarteres."
+  }).max(25, {
+    message: "El nombre de usuario debe ser menor a 25 caracarteres."
   }),
 
   email: z.string().email({
@@ -29,8 +29,8 @@ const schemaRegister = z.object({
 
   password: z.string().min(6, {
     message: "La contraseña debe ser mayor a 6 caracteres."
-  }).max(50, {
-    message: "La contraseña debe ser menor a 50 caracteres."
+  }).max(70, {
+    message: "La contraseña debe ser menor a 70 caracteres."
   }),
 })
 
@@ -99,15 +99,12 @@ const schemaLogin = z.object({
   identifier: z
     .string()
     .min(3, {
-      message: "El identificador debe ser de al menos 3 caracteres",
-    })
-    .max(20, {
-      message: "Por favor ingrese un nombre de usuario o correo valido",
+      message: "El identificador debe ser de al menos 3 caracteres.",
     }),
   password: z
     .string()
     .min(6, {
-      message: "La contraseña debe ser de al menos 6 caracteres",
+      message: "La contraseña debe ser de al menos 6 caracteres.",
     })
     .max(50, {
       message: "La contraseña debe ser entre 6 y 50 caracteres.",
