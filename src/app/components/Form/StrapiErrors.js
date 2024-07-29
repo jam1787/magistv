@@ -6,8 +6,7 @@ const ErrorWrapper = ({ children }) =>
   </div>
 
 export function StrapiErrors({ error }) {
-  if (!error?.message) return null;
-  console.log(error)
+  if (!error?.message) return null
 
   if (error.message === 'Your account email is not confirmed')
     return (

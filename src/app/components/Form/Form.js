@@ -4,6 +4,7 @@ import { useFormState } from 'react-dom'
 import { ZodErrors } from './ZodErrors'
 import { StrapiErrors } from './StrapiErrors'
 import { useEffect, useState } from 'react'
+import { SubmitButton } from '../SubmitButton'
 
 const INITIAL_STATE = {
     data: null,
@@ -23,18 +24,29 @@ export const Form = ({
     userAction
 }) => {
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
+    const [isLoading, setIsLoading] = useState(false)
     const [recaptchaToken, setRecaptchaToken] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
+
         if (!recaptchaToken) {
             alert('Por favor, complete el reCAPTCHA.')
+            setIsLoading(false)
             return
         }
+
         const formData = new FormData(e.target)
         formData.append('recaptchaToken', recaptchaToken)
         await formAction(formData)
     }
+
+    useEffect(() => {
+        if (formState?.zodErrors || formState?.strapiErrors)
+            setIsLoading(false)
+        
+    }, [formState?.zodErrors, formState?.strapiErrors])
 
     useEffect(() => {
         const loadRecaptcha = () => {
@@ -58,10 +70,10 @@ export const Form = ({
                 setRecaptchaToken(token)
             )
         }
-    }, [])
+    }, [formState])
 
     return (
-        <div className="w-screen max-w-72 p-2 rounded-lg">
+        <div className="w-screen max-w-72 p-2 lg:mt-20 xl:mt-0 rounded-lg">
             <h1 className="text-3xl font-semibold capitalize">{title}</h1>
             <p className='text-sm opacity-85 mt-1'>{description}</p>
             <form className="mt-5" onSubmit={handleSubmit}>
@@ -123,12 +135,11 @@ export const Form = ({
                         </Link>
                     }
                 </div>
-                <button
-                    className="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md"
-                    type='submit'
-                >
-                    {btnSubmitText}
-                </button>
+                <SubmitButton
+                    classStyle="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md"
+                    btnSubmitText={btnSubmitText}
+                    isLoading={isLoading}
+                />
             </form>
             {otherFormQuestion &&
                 <span className="flex justify-between text-sm font-light">

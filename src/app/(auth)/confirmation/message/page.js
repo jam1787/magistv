@@ -14,13 +14,13 @@ const ConfirmationMessage = () => {
                 Si no recibiste un correo electronico con un enlace de confirmación, 
                 por favor verifica tu carpeta de spam o espera un par de minutos.
             </p>
-            <p className='mt-2 text-sm'>
+            {/* <p className='mt-2 text-sm'>
                 ¿El correo aún no llega?{' '}
                 <Link href='/confirmation/newrequest' className='underline text-xs'>
                     Solicitar un nuevo correo de confirmación
                 </Link>
                 .
-            </p>
+            </p> */}
         </section>
     )
 }
