@@ -35,7 +35,7 @@ const NavMenu = ({
                 />
             </li>
             <li onClick={()=> setMenuClick(false)}>
-                <Link href='sign-in'>
+                <Link href='/sign-in'>
                     <HiOutlineUser className="text-3xl p-0" />
                 </Link>
             </li>
