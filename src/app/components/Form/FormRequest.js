@@ -2,6 +2,8 @@
 import { useFormState } from 'react-dom'
 import { ZodErrors } from './ZodErrors'
 import { StrapiErrors } from './StrapiErrors'
+import { SubmitButton } from '../SubmitButton'
+import { useEffect, useState } from 'react'
 
 const INITIAL_STATE = {
     data: null,
@@ -19,6 +21,21 @@ const FormRequest = ({
     userAction
 }) => {
     const [formState, formAction] = useFormState(userAction, INITIAL_STATE)
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setIsLoading(true)
+
+        const formData = new FormData(e.target)
+        await formAction(formData)
+    }
+
+    useEffect(() => {
+        if (formState?.zodErrors || formState?.strapiErrors)
+            setIsLoading(false)
+
+    }, [formState?.zodErrors, formState?.strapiErrors])
 
     if (formState.message === 'Success')
         return (
@@ -32,12 +49,12 @@ const FormRequest = ({
         <div className="w-screen max-w-80 p-2 rounded-lg">
             <h1 className="text-3xl font-semibold">{title}</h1>
             <p className='text-sm opacity-85 mt-3'>{description}</p>
-            <form className="mt-5" action={formAction}>
+            <form className="mt-5" onSubmit={handleSubmit}>
                 <div className="mt-3 text-sm">
                     <label className='block opacity-85 mb-2' htmlFor="email">Correo electronico *</label>
                     <input
                         className='w-full py-3 px-4 bg-transparent rounded-md border border-slate-400 outline-0'
-                        type="email"
+                        type="text"
                         name="email"
                         id="email"
                         placeholder="Escribe tu correo"
@@ -45,12 +62,10 @@ const FormRequest = ({
                     />
                     <ZodErrors error={formState?.zodErrors?.email} />
                 </div>
-                <button
-                    className="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md"
-                    type='submit'
-                >
-                    {btnSubmitText}
-                </button>
+                <SubmitButton
+                    btnSubmitText={btnSubmitText}
+                    isLoading={isLoading}
+                />
             </form>
             <StrapiErrors error={formState?.strapiErrors} />
         </div>

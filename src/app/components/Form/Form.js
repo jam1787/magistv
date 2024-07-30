@@ -88,6 +88,7 @@ export const Form = ({
                                 name="username"
                                 id="username"
                                 placeholder="Escribe un nombre de usuario"
+                                autoComplete='username'
                                 required
                             />
                             <ZodErrors error={formState?.zodErrors?.username} />
@@ -100,6 +101,7 @@ export const Form = ({
                                 name="email"
                                 id="email"
                                 placeholder="Escribe tu correo"
+                                autoComplete='email'
                                 required
                             />
                             <ZodErrors error={formState?.zodErrors?.email} />
@@ -114,6 +116,7 @@ export const Form = ({
                             name="identifier"
                             id="identifier"
                             placeholder="Escribe tu usuario o correo"
+                            autoComplete='username'
                             required
                         />
                         <ZodErrors error={formState?.zodErrors?.identifier} />
@@ -127,6 +130,7 @@ export const Form = ({
                         name="password"
                         id="password"
                         placeholder="Escribe tu contraseña"
+                        autoComplete='current-password'
                     />
                     <ZodErrors error={formState?.zodErrors?.password} />
                     {forgotPassword &&
@@ -136,7 +140,6 @@ export const Form = ({
                     }
                 </div>
                 <SubmitButton
-                    classStyle="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md"
                     btnSubmitText={btnSubmitText}
                     isLoading={isLoading}
                 />

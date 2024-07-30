@@ -1,7 +1,9 @@
-export const SubmitButton = ({ classStyle, btnSubmitText, isLoading }) => {
+export const SubmitButton = ({ btnSubmitText, isLoading }) => {
     return (
         <button
-            className={classStyle}
+            className="w-full my-5 py-2 px-5 font-medium bg-[#e7ebff] text-[#2245ff] rounded-md transition-opacity hover:bg-opacity-85 disabled:bg-opacity-70"
+            aria-disabled={isLoading}
+            disabled={isLoading}
             type="submit"
         >
             {isLoading

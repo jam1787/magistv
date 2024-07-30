@@ -237,9 +237,9 @@ export async function passwordResetAction(prevState, formData) {
 
   if (!validatedFields.success) {
     return {
-      ...prevState,
+      error: false,
+      message: "",
       zodErrors: validatedFields.error.flatten().fieldErrors,
-      message: "Ocurrió un error, por favor verifique los campos.",
       code: prevState.code
     }
   }
@@ -264,20 +264,18 @@ export async function passwordResetAction(prevState, formData) {
     )
     if (!strapiResponse.ok) {
       return {
-        strapiErrors: strapiResponse.error,
-        zodErrors: null,
-        message: "Ups! Algo salio mal. Por favor intente de nuevo.",
+        error: true,
+        message: "Por favor verifique que las contraseñas sean iguales",
         code: prevState.code
       }
     }
 
-    return { message: 'Success' }
+    return { error: false, message: 'Success' }
 
   } catch (error) {
     return {
-      ...prevState,
-      zodErrors: null,
-      message: "Error al actualizar la contraseña.",
+      error: true,
+      message: 'message' in error ? error.message : error.statusText,
       code: prevState.code,
     };
   }
