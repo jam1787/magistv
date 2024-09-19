@@ -5,8 +5,7 @@ export const DownloadLink = ({ route, text, classN }) => {
         <Link
             href={route}
             className={classN}
-            target="_blank"
-            rel="noopener noreferrer"
+            download
         >
             {text}
         </Link>

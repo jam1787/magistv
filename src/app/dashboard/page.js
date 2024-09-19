@@ -24,12 +24,12 @@ const DashboardRoute = async () => {
         />
         <DownloadLink
           classN="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 max-w-52 text-center transition rounded-2xl"
-          route="https://www.magis-tv.cc/apps/magis-celular.apk?0708"
+          route="/apps/magistv-celular.apk"
           text="Descargar para celulares"
         />
         <DownloadLink
           classN="px-4 py-2 text-sm border border-blue-600 hover:bg-blue-600 max-w-52 text-center transition rounded-2xl"
-          route="https://www.magis-tv.dev/apps/magis-tv-video.apk"
+          route="/apps/magistv-video.apk"
           text="Descargar para TV"
         />
       </div>

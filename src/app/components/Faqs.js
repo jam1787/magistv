@@ -1,11 +1,13 @@
 import { Accordion } from "./Accordion/Accordion"
+const mobileApp = "/apps/magistv-celular.apk"
+const tvApp = "/apps/magistv-video.apk"
 
 const faqsData = [
     {question: '¿Qué se puede ver en MagisTv?', answer: 'Se trata de una aplicación que ofrece acceso a más de 1.200 canales en vivo, 10.000 series y películas, eventos deportivos y más. Además, permite el acceso ilimitado a todas las plataformas, entre esas Star+, Hbo, Disney, por lo que los usuarios pueden ver los partidos de LigaPro y Muchos más sin ningún coste adicional.'},
     {question: '¿Qué tan seguro es la aplicación MagisTV?', answer: 'Siempre y cuando lo descarguen de los Links proporcionados por nosotros no representa ningún riesgo. Como todo en internet, tratando de replicar el éxito de Magis han salido copias maliciosas que introducen Publicidad en Tu teléfono abusando de los Permisos que le Puedan otorgar.'},
     {question: '¿Cuales son los dispositivos compatibles?', answer: 'Basicamente todo Dispositivos Android donde puedas instalar la aplicacion de Magis es compatible.', devices: true },
     {question: '¿Cuántos dispositivos puedo conectar al mismo tiempo?', answer: 'Podrás visualizar hasta 3 pantallas consecutivas, nuestro servicio se vende en cuentas triples o para 3 dispositivos.'},
-    {question: '¿Dónde se puede descargar la aplicación?', answer: 'Puedes descargar la aplicación desde los siguiente links:', linkMobile: 'https://www.magis-tv.cc/apps/magis-celular.apk?0708', linkTV: 'https://www.magis-tv.dev/apps/magis-tv-video.apk'}
+    {question: '¿Dónde se puede descargar la aplicación?', answer: 'Puedes descargar la aplicación desde los siguiente links:', linkMobile: mobileApp, linkTV: tvApp}
 ]
 
 const allowDevices = [{
